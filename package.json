@@ -1,14 +1,15 @@
 {
-  "name": "reto_back",
+  "name": "back_reto",
   "version": "1.0.0",
-  "description": "",
+  "description": "este es un proyecto de entrada",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gabriel Atencia",
   "license": "ISC",
   "dependencies": {
     "awilix": "^4.3.1",
@@ -23,7 +24,9 @@
     "helmet": "^4.4.1",
     "jsonwebtoken": "^8.5.1",
     "memory-cache": "^0.2.0",
+    "mysql2": "^2.2.5",
     "passport": "^0.4.1",
+    "sequelize": "^6.5.0",
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
@@ -31,5 +34,16 @@
     "jest": "^26.6.3",
     "mockingoose": "^2.13.2",
     "nodemon": "^2.0.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielAtenciaGomez/BackReto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GabrielAtenciaGomez/BackReto/issues"
+  },
+  "homepage": "https://github.com/GabrielAtenciaGomez/BackReto#readme"
 }
