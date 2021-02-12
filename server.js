@@ -1,18 +1,22 @@
-const express = require("express");
-const server = express();
-const { HomeRoutes } = require("./routes");
-const { NotfoundMiddleware } = require("./middlewares");
+const container = require("./src/startup/container");
+const server = container.resolve("app");
+const { USERBD, SERVERBD, PORTBD, BDNAME, PASSBD } = container.resolve(
+  "config"
+);
+const { Sequelize } = require("sequelize");
 
-server.use(express.static("./public"));
-server.use(express.json());
-
-server.use("/", HomeRoutes);
-server.use(NotfoundMiddleware);
-
-server.listen(8080, () => {
-  console.log("server iniciado en el puerto: " + 8080);
+const sequelize = new Sequelize(BDNAME, USERBD, PASSBD, {
+  dialect: "mysql",
+  host: SERVERBD,
+  port: PORTBD,
 });
 
-server.get("/", (req, res) => {
-  res.write("Holaaaaaaaaaaaaaaaaaa");
-});
+sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("conectado a bd");
+    server.start();
+  })
+  .catch((error) => {
+    console.log("Sea ha producido un error " + error);
+  });
