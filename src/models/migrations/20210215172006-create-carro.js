@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      id: {
+        type: Sequelize.STRING
+      },
       modelo: {
         type: Sequelize.STRING
       },
@@ -16,6 +19,9 @@ module.exports = {
       },
       foto: {
         type: Sequelize.STRING
+      },
+      valor: {
+        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,

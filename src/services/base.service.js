@@ -14,8 +14,12 @@ class BaseService {
   }
 
   async get(id) {
-    const entity = await _entityRepository.get(id);
-    return entity;
+    let entity = await _entityRepository.get(id);
+    if (!entity) {
+      return null;
+    }
+
+    return mapper(_entityToMap, entity.toJSON());
   }
 
   async create(entity) {

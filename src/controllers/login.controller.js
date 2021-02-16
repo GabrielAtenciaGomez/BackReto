@@ -7,9 +7,17 @@ class LoginController {
 
   async singIn(req, res) {
     const { body } = req;
-    console.log(body);
     const creds = await _loginService.singIn(body);
+
+    if (!creds) {
+      console.log("datos");
+    }
+    console.log("datos");
     return res.send(creds);
+  }
+  async isLoged(req, res) {
+    const result = await _loginService.isLoged();
+    res.send(result);
   }
 }
 module.exports = LoginController;

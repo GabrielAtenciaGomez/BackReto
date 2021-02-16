@@ -8,10 +8,6 @@ class UserService extends BaseService {
     _userRepository = UserRepository;
     super(_userRepository, usuario);
   }
-
-  getUserById(id) {
-    return _userRepository.get(id);
-  }
 }
 
 module.exports = UserService;
