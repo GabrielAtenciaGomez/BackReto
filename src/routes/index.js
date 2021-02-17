@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const compression = require("compression");
+const path = require("path");
 const {
   NotFoundMiddleWare,
   ErrorMiddleWare,
@@ -14,10 +15,13 @@ module.exports = function ({ LoginRoutes, CarroRoutes }) {
   const apiRoute = express.Router();
 
   apiRoute.use(express.json()).use(cors()).use(helmet()).use(compression());
-
-  apiRoute.use("/login", LoginRoutes);
-
+  console.log(path.join(__dirname, "../../img/"));
+  apiRoute.use(
+    "/carrosimg",
+    express.static(path.join(__dirname, "../../img/"))
+  );
   apiRoute.use("/carros", AutenticationMiddleWare, CarroRoutes);
+  apiRoute.use("/login", LoginRoutes);
 
   router.use("/v1/api", apiRoute);
   router.use(NotFoundMiddleWare);

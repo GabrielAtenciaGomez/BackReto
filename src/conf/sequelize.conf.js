@@ -5,4 +5,5 @@ module.exports = {
   database: process.env.BDNAME,
   host: process.env.SERVERBD,
   dialect: "mysql",
+  timezone: "-05:00",
 };

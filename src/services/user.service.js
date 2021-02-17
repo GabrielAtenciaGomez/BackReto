@@ -7,6 +7,7 @@ class UserService extends BaseService {
   constructor({ UserRepository }) {
     _userRepository = UserRepository;
     super(_userRepository, usuario);
+    console.log("user_service: ");
   }
 }
 

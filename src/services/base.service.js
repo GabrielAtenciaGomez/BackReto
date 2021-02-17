@@ -1,39 +1,38 @@
 const mapper = require("automapper-js");
-let _entityRepository = null;
-let _entityToMap = null;
+const { Error } = require("sequelize");
 
 class BaseService {
   constructor(EntityRepository, entityToMap) {
-    _entityRepository = EntityRepository;
-    _entityToMap = entityToMap;
+    this._entityRepository = EntityRepository;
+    this._entityToMap = entityToMap;
   }
 
   async getAll() {
-    const entities = await _entityRepository.getAll();
-    return entities.map((entity) => mapper(_entityToMap, entity.toJSON()));
+    const entities = await this._entityRepository.getAll();
+    return entities.map((entity) => mapper(this._entityToMap, entity.toJSON()));
   }
 
   async get(id) {
-    let entity = await _entityRepository.get(id);
+    let entity = await this._entityRepository.get(id);
     if (!entity) {
       return null;
     }
 
-    return mapper(_entityToMap, entity.toJSON());
+    return mapper(this._entityToMap, entity.toJSON());
   }
 
   async create(entity) {
-    const createdEntity = await _entityRepository.create(entity);
+    const createdEntity = await this._entityRepository.create(entity);
     return createdEntity;
   }
 
   async update(id, entity) {
-    const updatedEntity = await _entityRepository.update(id, entity);
+    const updatedEntity = await this._entityRepository.update(id, entity);
     return updatedEntity;
   }
 
   async delete(id) {
-    const deletedEntity = await _entityRepository.delete(id);
+    const deletedEntity = await this._entityRepository.delete(id);
     return deletedEntity;
   }
 }

@@ -6,17 +6,17 @@ const app = require(".");
 
 //repository
 
-const { UserRepository, CarroRepository } = require("../respositories");
+const { CarroRepository, UserRepository } = require("../respositories");
 
 //service
-const { LoginService, UserService, CarroService } = require("../services");
+const { CarroService, UserService, LoginService } = require("../services");
 
 //controller
-const { LoginController, CarroController } = require("../controllers");
+const { CarroController, LoginController } = require("../controllers");
 
 //routes
 const router = require("../routes");
-const { LoginRoutes, CarroRoutes } = require("../routes/index.routes");
+const { CarroRoutes, LoginRoutes } = require("../routes/index.routes");
 
 //db
 const db = require("../models");
@@ -29,23 +29,23 @@ container
     router: asFunction(router).singleton(),
   })
   .register({
-    LoginController: asClass(LoginController).singleton(),
     CarroController: asClass(CarroController).singleton(),
+    LoginController: asClass(LoginController).singleton(),
   })
   .register({
-    LoginRoutes: asFunction(LoginRoutes).singleton(),
     CarroRoutes: asFunction(CarroRoutes).singleton(),
+    LoginRoutes: asFunction(LoginRoutes).singleton(),
   })
   .register({
     db: asValue(db),
   })
   .register({
-    UserRepository: asClass(UserRepository).singleton(),
     CarroRepository: asClass(CarroRepository).singleton(),
+    UserRepository: asClass(UserRepository).singleton(),
   })
   .register({
-    LoginService: asClass(LoginService).singleton(),
-    UserService: asClass(UserService).singleton(),
     CarroService: asClass(CarroService).singleton(),
+    UserService: asClass(UserService).singleton(),
+    LoginService: asClass(LoginService).singleton(),
   });
 module.exports = container;

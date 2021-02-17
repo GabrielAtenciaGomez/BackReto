@@ -6,6 +6,7 @@ class CarroService extends BaseService {
   constructor({ CarroRepository }) {
     _carroRespository = CarroRepository;
     super(_carroRespository, carro);
+    console.log("carro_service");
   }
 }
 

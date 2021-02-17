@@ -14,6 +14,7 @@ class LoginService {
     const { id, password } = user;
 
     const userExist = await _userService.get(id);
+
     console.log(userExist);
     if (!userExist) {
       const error = new Error();
